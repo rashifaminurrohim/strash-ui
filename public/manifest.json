@@ -1,0 +1,38 @@
+{
+  "short_name": "Strash",
+  "name": "Strash",
+  "description": "Aplikasi untuk mengklasifikasi jenis sampah menggunakan Machine Learning",
+  "icons": [
+    {
+      "src": "images/Strash192.png",
+      "type": "image/png",
+      "sizes": "192x243"
+    },
+    {
+      "src": "images/Strash.png",
+      "type": "image/png",
+      "sizes": "512x647"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/Strash.png",
+      "type": "image/png",
+      "sizes": "512x647",
+      "form_factor": "wide"
+    },
+    {
+      "src": "images/Strash192.png",
+      "type": "image/png",
+      "sizes": "192x243",
+      "form_factor": "narrow"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#4CAF50",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "id"
+} 
