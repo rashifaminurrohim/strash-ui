@@ -144,13 +144,15 @@ const PredictionResults = ({ predictions, imageUrl }) => {
 
   if (!predictions || predictions.length === 0) {
     return (
-      <div className="relative w-full h-full bg-gray-100 rounded-lg flex items-center justify-center">
+      <div className="relative w-full h-full  rounded-lg flex items-center justify-center">
         <div className="flex flex-col items-center justify-center text-gray-400">
-          <svg className="w-20 h-20 mb-2" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-          </svg>
-          <p className="text-center text-gray-500">Belum ada hasil pemindaian</p>
-          <p className="text-center text-gray-400 text-sm mt-1">Tekan tombol "Scan Sampah" untuk mulai memindai</p>
+          <img
+              src="/images/icons/Camera.svg"
+              alt="Camera Icon"
+              className="w-16 h-16 mb-4 opacity-50"
+            />
+          <p className="text-sm font-semibold">Belum ada hasil pemindaian</p>
+          <p className="text-xs text-gray-600 mt-1">Tekan tombol "Scan Sampah" untuk mulai memindai</p>
         </div>
       </div>
     );
@@ -160,73 +162,73 @@ const PredictionResults = ({ predictions, imageUrl }) => {
   const details = getWasteDetails(topPrediction.className);
 
   return (
-    <div className="flex flex-col gap-4 h-full"> {/* Parent div for sections */}
+    <div className="flex flex-col gap-4 h-full text-[#2C6B3F]"> {/* Parent div for sections */}
       {/* Hasil Pemindaian Section */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 className="text-xl font-semibold mb-3 text-gray-700">Hasil Pemindaian</h3>
-        <div className="grid grid-cols-2 gap-y-2 text-gray-600">
+      <div className="bg-green-100 rounded-lg p-4 shadow-sm">
+        <h3 className="text-xl font-semibold mb-3 ">Hasil Pemindaian</h3>
+        <div className="grid grid-cols-2 gap-y-2 ">
           <span className="font-medium">Jenis Sampah:</span>
-          <span className="font-semibold text-right text-gray-800">{topPrediction.className}</span>
+          <span className="font-semibold text-right">{topPrediction.className}</span>
 
           <span className="font-medium">Akurasi:</span>
           <div className="flex items-center justify-end gap-2">
-            <span className="text-green-600 font-semibold">
+            <span className="font-semibold">
               {(topPrediction.probability * 100).toFixed(0)}%
             </span>
-            <div className="w-24 bg-gray-200 rounded-full h-2.5">
+            <div className="w-24 bg-white rounded-full h-2.5">
               <div
-                className="bg-green-600 h-2.5 rounded-full"
+                className="bg-[#2C6B3F] h-2.5 rounded-full"
                 style={{ width: `${topPrediction.probability * 100}%` }}
               ></div>
             </div>
           </div>
 
           <span className="font-medium">Poin:</span>
-          <span className="font-semibold text-right text-green-600">+{details.pointsEarned}</span>
-        </div>
-      </div>
+          <span className="font-semibold text-right text-[#2C6B3F]">+{details.pointsEarned}</span>
 
-      {/* Rekomendasi Section */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 className="text-xl font-semibold mb-3 text-gray-700">Rekomendasi:</h3>
-        <p className="text-gray-600">
+        </div>
+          <hr className='my-3'/>
+        <h3 className="text-xl font-semibold mb-3">Rekomendasi:</h3>
+        <p>
           {details.recommendation}
         </p>
       </div>
 
       {/* Dampak Lingkungan Section */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 className="text-xl font-semibold mb-3 text-gray-700">Dampak Lingkungan</h3>
-        <p className="text-gray-600">
+      <div className="bg-green-100 rounded-lg p-4 shadow-sm border border-gray-200">
+        <h3 className="text-xl font-semibold mb-3 ">Dampak Lingkungan</h3>
+        <p>
           {details.environmentalImpact}
         </p>
       </div>
 
       {/* Cara Pemilahan Section */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 className="text-xl font-semibold mb-3 text-gray-700">Cara Pemilahan</h3>
-        <p className="text-gray-600 mb-4">
+      <div className="bg-green-100 rounded-lg p-4 shadow-sm border border-gray-200">
+        <h3 className="text-xl font-semibold mb-3">Cara Pemilahan</h3>
+        <p className="mb-4">
           {details.sortingMethod}
         </p>
-        <button className="w-full bg-[#2C6B3F] hover:bg-[#1F4D2E] text-white font-bold py-3 px-4 rounded-lg transition">
+        <button className="bg-[#2C6B3F] mt-2 text-white text-sm font-semibold py-2 px-4 rounded-lg w-full hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition">
           Lihat Selengkapnya
         </button>
       </div>
 
       {/* Lokasi TPA Terdekat Section */}
-      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-        <h3 className="text-xl font-semibold mb-3 text-gray-700">Lokasi TPA Terdekat:</h3>
-        <div className="flex justify-between items-center text-gray-600">
+      <div className="bg-green-100 rounded-lg p-4 shadow-sm border border-gray-200">
+        <h3 className="text-xl font-semibold mb-3 ">Lokasi TPA Terdekat:</h3>
+        <div className="flex justify-between items-center ">
           <div>
             <p className="font-semibold">{details.tpaLocation.name}</p>
             <p className="text-sm">{details.tpaLocation.address}</p>
-            <p className="text-sm text-gray-500">{details.tpaLocation.distance}</p>
+            <p className="text-sm ">{details.tpaLocation.distance}</p>
           </div>
-          <button className="bg-[#2C6B3F] hover:bg-[#1F4D2E] text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 transition">
-            Arah
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2c-.55 0-1 .45-1 1v7c0 .55.45 1 1 1s1-.45 1-1V3c0-.55-.45-1-1-1zm6 17v-2c0-2.76-2.24-5-5-5s-5 2.24-5 5v2h16v-2c0-2.66-5.33-4-8-4zm-5 0c-.55 0-1-.45-1-1v-1c0-.55-.45-1-1-1s-1 .45-1 1v1c0 .55-.45 1-1 1h4zm0-14c-3.87 0-7 3.13-7 7s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 12c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
-            </svg>
+          <button className="bg-[#2C6B3F] text-white text-sm font-semibold flex items-center justify-center self-end gap-1 px-4 py-2 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 transition">
+            Arah{" "}
+            <img
+              src="/images/icons/Route-2.svg"
+              alt="Route Icon"
+              className="w-4 h-4"
+            />
           </button>
         </div>
       </div>

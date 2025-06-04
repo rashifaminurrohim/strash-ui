@@ -236,10 +236,14 @@ const WasteClassifier = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8 lg:p-12 min-h-screen bg-white text-[#2C6B3F] font-nunito flex flex-col">
-      <h1 className="text-3xl md:text-4xl font-bold mb-6 text-center">
+    <div className="container p-4 md:p-8 lg:p-12 min-h-screen bg-white text-[#2C6B3F] font-nunito flex flex-col">
+      <h1 className="text-2xl md:text-4xl font-bold mb-2 text-primary text-center">
         Klasifikasi Sampah
       </h1>
+      <p className="text-primary font-medium mb-8 text-center">
+          Arahkan kamera ke sampah untuk mendapatkan informasi jenis sampah dan
+          cara penanganannya
+      </p>
 
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
@@ -248,14 +252,16 @@ const WasteClassifier = () => {
       )}
 
       <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 flex-grow">
-        <div className="flex-1 flex flex-col items-center gap-4">
+        {/* div camera & tips */}
+        <div className="flex-1 basis-1/2 flex flex-col items-center gap-4">
+          {/* div Camera view */}
           <div className="w-full relative flex-grow min-h-[300px] lg:min-h-[400px]">
             {capturedImageSrc ? (
-              <div className="relative w-full h-full bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
+              <div className="relative h-full bg-gray-100 rounded-lg flex items-center justify-center overflow-hidden">
                 <img
                   src={capturedImageSrc}
                   alt="Gambar Hasil Pindai"
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
                 />
                 {/* Tombol untuk menghapus gambar dan kembali ke kamera */}
                 <button
@@ -281,81 +287,80 @@ const WasteClassifier = () => {
             ) : (
               <CameraView ref={cameraRef} onCapture={classifyImage} />
             )}
-            <div className="absolute top-4 left-4 bg-yellow-400 text-white text-sm font-semibold px-3 py-1 rounded-full shadow-md flex items-center gap-1">
-              <span className="w-2 h-2 bg-white rounded-full"></span>
-              Siap
+            <div className="absolute top-4 left-4 font-medium px-3 py-1.5 rounded-full z-10 flex items-center gap-2 bg-white text-sm">
+                <img
+                      src="/images/icons/Elips.svg"
+                      alt="Status Siap Icon"
+                      className="w-3 h-3"
+                      />
+              <span className="text-gray-800">Siap</span>
             </div>
           </div>
-
-          <div className="w-full flex justify-center gap-4 mt-4">
+          {/* div camera action button */}
+          <div className="w-full grid grid-cols-3 gap-4">
             <button
               onClick={handleFlashToggle}
-              className="flex-1 max-w-[150px] bg-[#2C6B3F] hover:bg-[#1F4D2E] text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition"
+              className="flex-1 flex items-center justify-center gap-2 bg-[#2C6B3F] text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-700"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M7 2v11h3v9l7-12h-4l4-8z" />
-              </svg>
+              <img
+                  src="/images/icons/Flash.svg"
+                  alt="Flash Icon"
+                  className="w-5 h-5"
+              />
               Flash
             </button>
             <button
               onClick={handleScanClick}
-              className="flex-1 max-w-[150px] bg-[#2C6B3F] hover:bg-[#1F4D2E] text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition"
+              className="flex-1 flex items-center justify-center gap-2 bg-[#2C6B3F] text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-700"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-              </svg>
               Scan Sampah
             </button>
             <button
               onClick={handleGalleryClick}
-              className="flex-1 max-w-[150px] bg-[#2C6B3F] hover:bg-[#1F4D2E] text-white font-bold py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition"
+              className="flex-1 flex items-center justify-center gap-2 bg-[#2C6B3F] text-white font-semibold py-3 px-4 rounded-lg hover:bg-green-700"
             >
-              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-8 13c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" />
-              </svg>
+              <img
+                  src="/images/icons/Gallery.svg"
+                  alt="Gallery Icon"
+                  className="w-5 h-5"
+                />
               Galeri
             </button>
           </div>
-
+          {/* div tips */}
           <div className="bg-green-100 border border-green-300 text-green-800 p-4 rounded-xl w-full mt-4">
             <h3 className="font-semibold text-lg mb-2">Tips Pemindaian:</h3>
             <ul className="list-none space-y-2">
-              <li className="flex items-center gap-2">
-                <svg
-                  className="w-5 h-5 text-green-500"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
-                </svg>
+              <li className="flex items-center text-sm text-[#2C6B3F]">
+                <img
+                  src="/images/icons/Tips.svg"
+                  alt="Check Icon"
+                  className="w-4 h-4 mr-2"
+                />
                 Pastikan sampah berada dalam kotak pemindaian
               </li>
-              <li className="flex items-center gap-2">
-                <svg
-                  className="w-5 h-5 text-green-500"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
-                </svg>
+              <li className="flex items-center text-sm text-[#2C6B3F]">
+                <img
+                  src="/images/icons/Tips.svg"
+                  alt="Check Icon"
+                  className="w-4 h-4 mr-2"
+                />
                 Hindari cahaya yang terlalu terang atau terlalu gelap
               </li>
-              <li className="flex items-center gap-2">
-                <svg
-                  className="w-5 h-5 text-green-500"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
-                </svg>
+              <li className="flex items-center text-sm text-[#2C6B3F]">
+                <img
+                  src="/images/icons/Tips.svg"
+                  alt="Check Icon"
+                  className="w-4 h-4 mr-2"
+                />
                 Tahan kamera dengan stabil selama pemindaian
               </li>
             </ul>
           </div>
         </div>
-
-        <div className="flex-1 flex flex-col">
-          <h2 className="text-xl md:text-2xl font-semibold mb-4 text-gray-700">
+        
+        <div className="flex-1 basis-1/2 flex flex-col bg-white p-6 rounded-lg shadow-md">
+          <h2 className="text-xl md:text-2xl font-bold mb-4 text-primary">
             Hasil Pemindaian
           </h2>
           <div className="flex-grow">
