@@ -164,19 +164,19 @@ const HistoryPage = () => {
   const totalActivitiesCount = scans.length;
 
   return (
-    <div className="font-nunito bg-gray-50 text-[#2C6B3F] pt-28 pb-8 px-4 md:px-8 lg:px-12"> {/* Background gray-50 for overall page */}
+    <div className="font-nunito w-full text-[#2C6B3F] pt-12 pb-8 px-4 md:px-8 lg:px-12"> {/* Background gray-50 for overall page */}
       {/* Header Section */}
       <div className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-800">Riwayat Aktivitas</h1>
-        <p className="text-lg text-gray-600">Lihat riwayat aktivitas daur ulang dan transaksi poin Anda</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold mb-2">Riwayat Aktivitas</h1>
+        <p className="text-lg ">Lihat riwayat aktivitas daur ulang dan transaksi poin Anda</p>
       </div>
 
       {/* Filter and Search Section */}
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4
-                   bg-green-50 border border-green-200 rounded-lg p-4 shadow-sm"> {/* Added green background */}
+                   bg-[#E8F5E9] rounded-lg p-4 shadow-sm"> {/* Added green background */}
         <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
           <select
-            className="block w-full sm:w-40 p-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#2C6B3F]/50 bg-white text-gray-700"
+            className="block w-full sm:w-40 p-2.5 border border-[#2C6B3F] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#2C6B3F]/50 bg-white"
             defaultValue="all"
           >
             <option value="all">Semua Waktu</option>
@@ -186,7 +186,7 @@ const HistoryPage = () => {
             <option value="year">Tahun Ini</option>
           </select>
           <select
-            className="block w-full sm:w-40 p-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-[#2C6B3F]/50 bg-white text-gray-700"
+            className="block w-full sm:w-40 p-2.5 border border-[#2C6B3F] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#2C6B3F]/50 bg-white"
             defaultValue="all"
           >
             <option value="all">Semua Kategori</option>
@@ -210,23 +210,37 @@ const HistoryPage = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-center">
           <div className="flex items-center gap-4">
-            <span className="text-5xl font-extrabold text-[#2C6B3F]">
-              <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-            </span>
+            <span
+                className="flex items-center justify-center h-16 w-16 rounded-full"
+                style={{ background: "#E8F5E9" }}
+              >
+            <img
+                    src="/images/icons/Star-2.svg"
+                    alt="Route Icon"
+                    className="w-7 h-7"
+            />
+              </span>
             <div>
-              <span className="text-5xl font-extrabold text-[#2C6B3F]">{totalPoints}</span>
-              <p className="text-xl font-medium text-gray-500">Total Poin</p>
+              <span className="text-3xl font-extrabold leading-tight">{totalPoints}</span>
+              <p className="text-base font-semibold mt-1">Total Poin</p>
             </div>
           </div>
         </div>
         <div className="bg-white p-6 rounded-lg shadow border border-gray-200 flex items-center">
           <div className="flex items-center gap-4">
-            <span className="text-5xl font-extrabold text-[#2C6B3F]">
-              <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+            <span
+                className="flex items-center justify-center h-16 w-16 rounded-full"
+                style={{ background: "#E8F5E9" }}
+                >
+              <img
+                      src="/images/icons/Task.svg"
+                      alt="Route Icon"
+                      className="w-7 h-7"
+              />
             </span>
             <div>
-              <span className="text-5xl font-extrabold text-[#2C6B3F]">{totalActivitiesCount}</span>
-              <p className="text-xl font-medium text-gray-500">Total Aktivitas</p>
+              <span className="text-3xl font-extrabold leading-tight">{totalActivitiesCount}</span>
+              <p className="text-base font-semibold mt-1">Total Aktivitas</p>
             </div>
           </div>
         </div>
@@ -234,9 +248,9 @@ const HistoryPage = () => {
 
       {/* Scan History List */}
       {scans.length === 0 ? (
-        <div className="text-center py-16 bg-white rounded-lg shadow-sm border border-gray-200">
-          <p className="text-gray-600 text-lg">Belum ada riwayat klasifikasi untuk akun ini.</p>
-          <p className="text-gray-500 text-sm mt-2">Silakan lakukan klasifikasi terlebih dahulu untuk melihat riwayat Anda di sini.</p>
+        <div className="text-center py-16 bg-white rounded-lg shadow-sm border border-gray-200 mb-12">
+          <p className="text-lg">Belum ada riwayat klasifikasi untuk akun ini.</p>
+          <p className="text-sm mt-2 opacity-75">Silakan lakukan klasifikasi terlebih dahulu untuk melihat riwayat Anda di sini.</p>
         </div>
       ) : (
         <>
@@ -303,13 +317,28 @@ const HistoryPage = () => {
       )}
 
       {/* About Recycle Section */}
-      <div className="bg-green-50 bg-opacity-70 border border-green-200 rounded-lg p-6 md:p-8">
+      <div className="bg-[#E8F5E9] bg-opacity-70 rounded-lg p-6 md:p-8">
         <h2 className="text-2xl md:text-3xl font-extrabold mb-5 text-[#2C6B3F]">Tentang Daur Ulang</h2>
+        <p className="text-base mb-6">
+            Poin yang Anda peroleh dari aktivitas daur ulang dapat ditukarkan
+            dengan berbagai hadiah menarik atau donasi untuk program lingkungan.
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {/* Cara Mendapatkan Poin */}
-          <div>
-            <h3 className="font-semibold text-xl mb-3 text-gray-700">Cara Mendapatkan Poin</h3>
-            <ul className="list-disc list-inside text-gray-600 space-y-2">
+          <div className='bg-white rounded-xl border border-[#2C6B3F] p-6 flex flex-col gap-2'>
+            <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="/images/icons/Recycle-3.svg"
+                  alt="Poin"
+                  className="h-6 w-6"
+                />
+                <span className="font-bold text-lg">
+                  <h3>
+                    Cara Mendapatkan Poin
+                  </h3>
+                </span>
+              </div>
+            <ul className="list-disc list-inside space-y-2 pl-2">
               <li>Daur ulang plastik</li>
               <li>Daur ulang botol kaca</li>
               <li>Daur ulang kertas</li>
@@ -318,9 +347,20 @@ const HistoryPage = () => {
             </ul>
           </div>
           {/* Penukaran Poin */}
-          <div>
-            <h3 className="font-semibold text-xl mb-3 text-gray-700">Penukaran Poin</h3>
-            <ul className="list-disc list-inside text-gray-600 space-y-2">
+          <div className='bg-white rounded-xl border border-[#2C6B3F] p-6 flex flex-col gap-2'>
+            <div className="flex items-center gap-3 mb-2">
+                <img
+                  src="/images/icons/Gift.svg"
+                  alt="Poin"
+                  className="h-6 w-6"
+                />
+                <span className="font-bold text-lg">
+                  <h3>
+                    Penukaran Poin
+                  </h3>
+                </span>
+              </div>
+            <ul className="list-disc list-inside space-y-2 pl-2">
               <li>100 poin: Voucher Belanja Rp 10.000</li>
               <li>500 poin: Voucher Belanja Rp 50.000</li>
               <li>1000 poin: Voucher Belanja Rp 100.000</li>
