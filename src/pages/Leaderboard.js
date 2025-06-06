@@ -34,9 +34,7 @@ const LeaderboardPage = () => {
     return <div className="text-center py-12 text-red-500">{error.message}</div>;
   }
   return (
-    <div className="py-12 max-w-2xl mx-auto">
-      <LeaderboardComponent leaderboard={leaderboard} />
-    </div>
+    <LeaderboardComponent leaderboard={leaderboard} />
   );
 };
 
