@@ -80,31 +80,9 @@ const sidebarInactiveIcons = [
   "/images/icons/Ask-2.svg",
 ];
 
-const pointHistory = [
-  {
-    icon: "/images/icons/Plastic.svg",
-    title: "Plastik",
-    date: "14 Mei 2025 • 09:30",
-    point: "+ 3 Poin",
-    positive: true,
-  },
-  {
-    icon: "/images/icons/Paper.svg",
-    title: "Kertas",
-    date: "10 Mei 2025 • 14:15",
-    point: "+ 3 Poin",
-    positive: true,
-  },
-  {
-    icon: "/images/icons/Reward.svg",
-    title: "Penukaran Voucher",
-    date: "01 Mei 2025 • 16:45",
-    point: "- 100 Poin",
-    positive: false,
-  },
-];
-
-function ContentSection({ activeTab }) {
+function ContentSection({ activeTab, userData }) {
+  const [phone, setPhone] = useState(() => localStorage.getItem("phone") || "");
+  const [address, setAddress] = useState(() => localStorage.getItem("address") || "");
   const [notifAktivitas, setNotifAktivitas] = useState(true);
   const [notifHadiah, setNotifHadiah] = useState(false);
   const [privasiPublik, setPrivasiPublik] = useState(true);
@@ -118,6 +96,11 @@ function ContentSection({ activeTab }) {
   useEffect(() => {
     setAnimateToggle(false);
   }, [activeTab]);
+
+  React.useEffect(() => {
+    if (userData.phone) setPhone(userData.phone);
+    if (userData.address) setAddress(userData.address);
+  }, [userData]);
 
   useEffect(() => {
     if (activeTab === 1) {
@@ -134,10 +117,18 @@ function ContentSection({ activeTab }) {
     setTimeout(() => setAnimateToggle(false), 200);
   };
 
+  // Fungsi simpan ke localStorage saat tombol disubmit
+  const handleSave = (e) => {
+    e.preventDefault();
+    localStorage.setItem("phone", phone);
+    localStorage.setItem("address", address);
+    alert("Perubahan berhasil disimpan di browser");
+  };
+
   if (activeTab === 0) {
     // Informasi Pribadi
     return (
-      <section className="bg-white border border-gray-200 rounded-xl p-8 mb-6">
+      <section className="bg-white border border-gray-200 rounded-xl p-8 mb-6" onSubmit={handleSave}>
         <header className="mb-6">
           <h2 className="text-2xl font-bold text-primary mb-2">
             Informasi Pribadi
@@ -151,7 +142,7 @@ function ContentSection({ activeTab }) {
             <input
               type="text"
               className="border rounded-lg px-4 py-2"
-              value="Ahmad Rizki"
+              value={userData.name}
               readOnly
             />
           </label>
@@ -160,7 +151,7 @@ function ContentSection({ activeTab }) {
             <input
               type="email"
               className="border rounded-lg px-4 py-2"
-              value="ahmad.rizki@email.com"
+              value={userData.email}
               readOnly
             />
           </label>
@@ -171,14 +162,16 @@ function ContentSection({ activeTab }) {
             <input
               type="text"
               className="border rounded-lg px-4 py-2"
-              value="+62 812 3456 7890"
-              readOnly
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
             />
           </label>
           <label className="flex flex-col gap-1">
             <span className="text-primary text-sm font-semibold">Alamat</span>
             <textarea
               className="border rounded-lg px-4 py-2"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
               placeholder="Masukkan alamat lengkap Anda"
             />
           </label>
@@ -461,6 +454,8 @@ const Profile = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate(); // Initialize useNavigate
 
+  console.log(JSON.stringify(userData))
+
   const [activeTab, setActiveTab] = useState(0);
   const [hoverIdx, setHoverIdx] = useState(null);
 
@@ -554,7 +549,7 @@ const Profile = () => {
               {userData.name || 'User'}
             </h1>
             <a
-              href="mailto:ahmad.rizki@email.com"
+              href={`mailto:${userData.email}`}
               className="text-primary text-lg"
             >
               {userData.email}
@@ -659,7 +654,7 @@ const Profile = () => {
           
           {/* Main Content */}
           <main className="w-full md:w-2/3 flex flex-col gap-8">
-            <ContentSection activeTab={activeTab} />
+            <ContentSection activeTab={activeTab} userData={userData} />
             <section
               aria-labelledby="riwayat-poin-title"
               className="bg-white border border-gray-200 rounded-xl p-6 md:p-8"
@@ -705,40 +700,9 @@ const Profile = () => {
                   Tukar Poin
                 </button>
               </div>
-              <ul className="flex flex-col gap-6">
-                {pointHistory.map((item, idx) => (
-                  <li
-                    key={idx}
-                    className="flex items-center justify-between bg-white border border-gray-200 rounded-lg p-5"
-                  >
-                    <div className="flex items-center gap-4">
-                      <span className="flex items-center justify-center h-14 w-14 rounded-md bg-[#E8F5E9]">
-                        <img src={item.icon} alt="" className="h-7 w-7" />
-                      </span>
-                      <div>
-                        <div className="font-bold text-primary text-lg leading-tight">
-                          {item.title}
-                        </div>
-                        <div className="text-sm text-gray-500 mt-1">
-                          {item.date}
-                        </div>
-                      </div>
-                    </div>
-                    <span
-                      className={`font-bold text-lg ${item.positive ? "text-[#43B26C]" : "text-[#DC2626]"}`}
-                    >
-                      {item.point}
-                    </span>
-                  </li>
-                ))}
-              </ul>
             </section>
           </main>
-          
-
         </section>
-
-
       </div>
     </section>
   );

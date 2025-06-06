@@ -73,19 +73,25 @@ const HistoryPage = () => {
   const getWasteIcon = (classification) => {
     switch (classification) {
       case 'Plastik': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M16 11v-1c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v1H2v10h20V11h-6zm-4 8c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm-6-8h4v-1c0-.55.45-1 1-1h2c.55 0 1 .45 1 1v1h4v-1c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v1H6z" />
-        </svg>
+        <img
+            src="/images/icons/Plastic.svg"
+            alt="Sampah Plastik Icon"
+            className="w-8 h-8"
+        />
       );
       case 'Kertas': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
-        </svg>
+        <img
+            src="/images/icons/Paper.svg"
+            alt="Sampah Kertas Icon"
+            className="w-8 h-8"
+        />
       );
       case 'Kaca': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M21 4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 16H4c-.55 0-1-.45-1-1V7c0-.55.45-1 1-1h16c.55 0 1 .45 1 1v12c0 .55-.45 1-1 1zm-8-7l-4 4V8l4 4zm-4 4h8V8h-8z" />
-        </svg>
+        <img
+            src="/images/icons/Glass.svg"
+            alt="Sampah Kaca Icon"
+            className="w-8 h-8"
+        />
       );
       case 'Baterai': return (
         <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
@@ -93,9 +99,11 @@ const HistoryPage = () => {
         </svg>
       );
       case 'Sampah Organik': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" /> {/* Placeholder for organic */}
-        </svg>
+        <img
+            src="/images/icons/Organic.svg"
+            alt="Sampah Organik Icon"
+            className="w-8 h-8"
+        />
       );
       case 'Kardus': return (
         <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
@@ -113,9 +121,11 @@ const HistoryPage = () => {
         </svg>
       );
       case 'Logam': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M14 6V4h-4v2H8v14h8V6h-2zM12 20c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/>
-        </svg>
+        <img
+            src="/images/icons/Metal.svg"
+            alt="Sampah Logam Icon"
+            className="w-8 h-8"
+        />
       );
       case 'Sepatu': return (
         <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
@@ -256,28 +266,52 @@ const HistoryPage = () => {
         <>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             {currentScans.map((scan) => (
-              <div
+              <article
                 key={scan.id}
-                className="bg-white rounded-lg shadow-sm border border-gray-200 p-5 relative min-h-[120px]"
+                className="bg-white border border-gray-200 rounded-xl flex flex-col shadow-sm overflow-hidden"
               >
-                <div className="flex items-center gap-4">
-                  {getWasteIcon(scan.classification)} {/* Ikon sesuai jenis sampah */}
-                  <div>
-                    <h3 className="font-bold text-xl capitalize text-gray-800">{scan.classification}</h3>
-                    <p className="text-sm text-gray-600">
-                        {/* Menggunakan formatDate untuk tanggal, dan formatTime untuk waktu */}
-                        {formatDate(scan.timestamp).split('pukul')[0].trim()} • {formatTime(scan.timestamp)}
-                    </p>
+                <div className="flex flex-row items-start gap-4 p-6 pb-0 flex-1">
+                  <span
+                    className="flex items-center justify-center h-16 w-16 rounded-lg"
+                    style={{ background: "#E8F5E9" }}
+                  >
+                    {getWasteIcon(scan.classification)} {/* Ikon sesuai jenis sampah */}
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-primary font-bold text-lg truncate">
+                        {scan.classification}
+                      </span>
+                      <span className="bg-[#E8F5E9] text-primary text-xs font-bold rounded-lg px-3 py-1 ml-auto">
+                        Selesai
+                      </span>
+                    </div>
+                    <div className="text-primary text-sm font-medium opacity-70 mb-2 truncate">
+                      {formatDate(scan.timestamp).split('pukul')[0].trim()} • {formatTime(scan.timestamp)}
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <img
+                        src="/images/icons/Star-2.svg"
+                        alt="Poin"
+                        className="h-5 w-5"
+                      />
+                      <span className="text-primary font-semibold text-base">
+                        {getPointsForClassification(scan.classification)} Poin
+                      </span>
+                    </div>
                   </div>
-                  <span className="absolute top-5 right-5 bg-green-100 text-green-800 text-xs font-semibold px-2 py-0.5 rounded">Selesai</span>
                 </div>
-                <p className="text-base text-gray-600 mt-2">
-                  <span className="font-semibold">Poin:</span> <span className="text-green-600">+{getPointsForClassification(scan.classification)}</span>
-                </p>
-                <button className="absolute bottom-5 right-5 text-[#2C6B3F] hover:text-[#1F4D2E] text-sm font-semibold flex items-center gap-1">
-                  Lihat Gambar <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                </button>
-              </div>
+                <div className="bg-[#F5F6F7] w-full px-6 py-3 flex justify-end items-center mt-6">
+                  <button className="text-primary font-semibold text-sm flex items-center gap-1 hover:font-bold">
+                    Lihat Gambar
+                    <img
+                      src="/images/icons/Arrow-Right-3.svg"
+                      alt="Lihat"
+                      className="h-3 w-3"
+                    />
+                  </button>
+                </div>
+              </article>
             ))}
           </div>
 
