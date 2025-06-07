@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3005/api';
+const API_URL = 'https://strash-backend-production.up.railway.app/api';
 
 const handleApiError = error => {
   if (error.response) {
