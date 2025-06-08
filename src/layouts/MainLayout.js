@@ -1,7 +1,16 @@
 import Navbar from '../components/common/Navbar';
 import Footer from '../components/common/Footer';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
+import Camera from '../utils/camera';
 
 const MainLayout = ({ children }) => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Matikan semua stream saat route berubah
+    Camera.stopAllStreams();
+  }, [location]);
   return (
     <div className="min-h-screen flex-1 flex-col items-center">
       <Navbar />

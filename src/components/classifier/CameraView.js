@@ -5,6 +5,7 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from 'react';
+import Camera from '../../utils/camera';
 
 const CameraView = forwardRef(({ onCapture }, ref) => {
   const videoRef = useRef(null);
@@ -28,6 +29,21 @@ const CameraView = forwardRef(({ onCapture }, ref) => {
     };
   }, []);
 
+  // Kamera berhenti jika tab browser disembunyikan
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        console.log('CameraView: Tab hidden - stopping camera.');
+        stopCamera();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
+
   const stopCamera = () => {
     if (videoRef.current && videoRef.current.srcObject) {
       const stream = videoRef.current.srcObject;
@@ -35,6 +51,11 @@ const CameraView = forwardRef(({ onCapture }, ref) => {
       tracks.forEach(track => track.stop());
       videoRef.current.srcObject = null;
       setCameraActive(false);
+
+      // Optional: hapus stream dari window.currentStreams
+      if (Array.isArray(window.currentStreams)) {
+        window.currentStreams = window.currentStreams.filter((s) => s !== stream);
+      }
       console.log('CameraView: Camera stream stopped.');
     }
   };
@@ -54,6 +75,8 @@ const CameraView = forwardRef(({ onCapture }, ref) => {
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
       videoRef.current.srcObject = stream;
       setCameraActive(true);
+      // Tambah stream ke global window object
+      Camera.addNewStream(stream);
       console.log('CameraView: Camera stream started successfully.');
     } catch (err) {
       setError('Gagal mengakses kamera: ' + err.message);

@@ -13,6 +13,7 @@ import HistoryPage from './components/history/HistoryPage';
 import Profile from './pages/Profile';
 import { auth } from './config/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
+import Camera from './utils/camera';
 
 // Protected Route Component
 const ProtectedRoute = ({ children }) => {
@@ -123,6 +124,20 @@ const router = createBrowserRouter(
 
 function App() {
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        console.log('Tab berubah: menghentikan semua stream');
+        Camera.stopAllStreams();
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {

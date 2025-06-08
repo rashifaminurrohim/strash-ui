@@ -43,7 +43,7 @@ const WasteClassifier = () => {
       if (model) {
         model.dispose();
       }
-      if (cameraRef.current) {
+      if (cameraRef.current?.stop) {
         cameraRef.current.stop(); // Pastikan kamera berhenti saat komponen dilepas
       }
     };
@@ -237,10 +237,10 @@ const WasteClassifier = () => {
 
   return (
     <div className="container p-4 md:p-8 lg:p-12 min-h-screen bg-white text-[#2C6B3F] font-nunito flex flex-col">
-      <h1 className="text-2xl md:text-4xl font-bold mb-2 text-primary text-center">
-        Klasifikasi Sampah
+      <h1 className="text-3xl md:text-5xl font-black mb-2 text-primary text-center">
+        Scan Sampah
       </h1>
-      <p className="text-primary font-medium mb-8 text-center">
+      <p className="text-primary text-lg font-medium mb-8 text-center">
           Arahkan kamera ke sampah untuk mendapatkan informasi jenis sampah dan
           cara penanganannya
       </p>
