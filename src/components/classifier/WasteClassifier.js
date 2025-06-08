@@ -6,6 +6,7 @@ import CameraView from './CameraView';
 import ImageUpload from './ImageUpload';
 import PredictionResults from './PredictionResults';
 import { API_URL, handleApiError } from '../../config/api'; // Pastikan path ini benar
+import Swal from 'sweetalert2';
 
 const WASTE_CATEGORIES = {
   battery: 'Baterai',
@@ -235,6 +236,16 @@ const WasteClassifier = () => {
     );
   };
 
+  const handleInfoButton = () => {
+    Swal.fire({
+      title: "Mohon tunggu sejenak",
+      text: "Model berjalan di perangkat Anda. Harap tunggu, dan pilih 'Wait' jika halaman tidak responsif.",
+      icon: "info",
+      confirmButtonText: "Oke",
+      confirmButtonColor: "#2C6B3F",
+    });
+  };
+
   return (
     <div className="container p-4 md:p-8 lg:p-12 min-h-screen bg-white text-[#2C6B3F] font-nunito flex flex-col">
       <h1 className="text-3xl md:text-5xl font-black mb-2 text-primary text-center">
@@ -287,14 +298,16 @@ const WasteClassifier = () => {
             ) : (
               <CameraView ref={cameraRef} onCapture={classifyImage} />
             )}
-            <div className="absolute top-4 left-4 font-medium px-3 py-1.5 rounded-full z-10 flex items-center gap-2 bg-white text-sm">
-                <img
-                      src="/images/icons/Elips.svg"
-                      alt="Status Siap Icon"
-                      className="w-3 h-3"
-                      />
-              <span className="text-gray-800">Siap</span>
-            </div>
+            <button
+              onClick={handleInfoButton}
+              className="absolute top-4 left-4 w-8 h-8 rounded-full z-10 flex items-center justify-center bg-primary shadow"
+            >
+              <img
+                src="/images/icons/Info.svg"
+                alt="Info Icon"
+                className="w-7 h-7"
+              />
+            </button>
           </div>
           {/* div camera action button */}
           <div className="w-full grid grid-cols-3 gap-4">
