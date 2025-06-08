@@ -94,8 +94,9 @@ const HistoryPage = () => {
         />
       );
       case 'Baterai': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.34C7 21.4 7.6 22 8.33 22h7.34c.73 0 1.33-.6 1.33-1.33V5.33C17 4.6 16.4 4 15.67 4z" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="34" height="38" viewBox="0 0 48 48">
+          <path fill="none" stroke="#2C6B3F" stroke-linecap="round" stroke-linejoin="round" d="M20.505 4.5h6.67a1 1 0 0 1 1 1v3h4.63a2 2 0 0 1 2 2v31a2 2 0 0 1-2 2h-17.61a2 2 0 0 1-2-2v-31a2 2 0 0 1 2-2h4.31v-3a1 1 0 0 1 1-1m-1 4h8.67" stroke-width="2" />
+          <path fill="none" stroke="#2C6B3F" stroke-linecap="round" stroke-linejoin="round" d="M25.868 17.5L20 26h8l-5.868 8.5" stroke-width="2" />
         </svg>
       );
       case 'Sampah Organik': return (
@@ -106,30 +107,31 @@ const HistoryPage = () => {
         />
       );
       case 'Kardus': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20 6h-6V4h-4v2H4c-1.1 0-2 .9-2 2v11c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM4 20V8h16l.01 12H4zM6 10h12v2H6zm0 4h12v2H6z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
+          <path fill="#2C6B3F" d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2zm3.564 1.426L5.596 5L8 5.961L14.154 3.5zm3.25 1.7l-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464z" />
         </svg>
       );
       case 'Pakaian': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M14 10H2v2h12v-2zm0-4H2v2h12V6zm4 8v-4h-2V6h-2v4h-2v4h4v4h-2v2h4v-2h2v-4zM2 16h8v-2H2v2z" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 16 16">
+          <path fill="#2C6B3F" d="M8 3a1 1 0 0 0-.943.667a.5.5 0 0 1-.942-.334a2 2 0 1 1 3.22 2.157l-.041.037c-.22.197-.419.374-.57.566c-.16.198-.223.359-.223.503c0 .219.12.42.313.524L14.16 10a1.596 1.596 0 0 1-.757 3H2.595a1.595 1.595 0 0 1-.755-3l4.423-2.38a.5.5 0 0 1 .474.88l-4.424 2.38A.595.595 0 0 0 2.595 12h10.81a.596.596 0 0 0 .282-1.12L8.34 8a1.6 1.6 0 0 1-.84-1.404c0-.462.212-.839.44-1.126c.208-.261.468-.493.674-.677l.054-.048A1 1 0 0 0 8 3" />
         </svg>
       );
       case 'Sampah Medis': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 14 14">
+          <path fill="none" stroke="#2C6B3F" stroke-linecap="round" stroke-linejoin="round" d="M7 3L2.42 7.49a2 2 0 0 0 0 2.83l1.26 1.26a2 2 0 0 0 2.83 0L11 7M10.5.5l3 3M9 5l3-3m-8.95 8.95L.5 13.5m5-12l7 7" stroke-width="0.7" />
         </svg>
       );
       case 'Logam': return (
-        <img
-            src="/images/icons/Metal.svg"
-            alt="Sampah Logam Icon"
-            className="w-8 h-8"
-        />
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
+          <path fill="#2C6B3F" d="M7.5 11h9.1c.3 0 .5-.3.4-.6l-1-6c0-.2-.3-.4-.5-.4h-7c-.2 0-.5.2-.5.4l-1 6v.1c0 .3.2.5.5.5m1.4-6h6.2l.8 5H8.1zM22 13.4c0-.2-.2-.4-.5-.4h-7c-.2 0-.5.2-.5.4l-1 6v.1c0 .3.2.5.5.5h9.1c.3 0 .5-.3.4-.6zM14.1 19l.8-5h6.2l.8 5zm-4.6-6h-7c-.2 0-.5.2-.5.4l-1 6v.1c0 .3.2.5.5.5h9.1c.3 0 .5-.3.4-.6l-1-6c0-.2-.3-.4-.5-.4m-7.4 6l.8-5h6.2l.8 5z" />
+        </svg>
       );
       case 'Sepatu': return (
-        <svg className="w-8 h-8 text-green-700" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M21.5 8.9c-.3-.3-.7-.5-1.1-.5H18c-.8 0-1.5.7-1.5 1.5v1.8c0 .2.1.4.3.4s.4-.1.4-.3V10.5c0-.2.2-.4.4-.4h1.5c.6 0 1.1.5 1.1 1.1v2.1c0 .2.1.4.3.4s.4-.1.4-.3V12c.1-.4.2-.8.2-1.2v-.6c0-.8-.7-1.5-1.5-1.5zM20 18H4c-1.1 0-2 .9-2 2v2h18v-2c0-1.1-.9-2-2-2zM15 15V8h-3V5H9c-1.1 0-2 .9-2 2v8c0 1.1-.9 2-2 2H4c-1.1 0-2 .9-2 2v2h15v-4z"/>
+        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24">
+          <g fill="none" stroke="#2C6B3F" stroke-linecap="round" stroke-linejoin="round" stroke-width="1">
+            <path d="M4 6h5.426a1 1 0 0 1 .863.496l1.064 1.823a3 3 0 0 0 1.896 1.407l4.677 1.114A4 4 0 0 1 21 14.73V17a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1m10 7l1-2" />
+            <path d="M8 18v-1a4 4 0 0 0-4-4H3m7-1l1.5-3" />
+          </g>
         </svg>
       );
       default: return (
