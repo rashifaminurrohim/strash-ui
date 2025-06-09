@@ -17,7 +17,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Kimia Industri No. 50',
             distance: '7.0 km dari lokasi Anda',
           },
-          pointsEarned: 10,
+          pointsEarned: 5,
         };
       case 'Sampah Organik': // biological
         return {
@@ -41,7 +41,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Industri Daur Ulang No. 20',
             distance: '3.8 km dari lokasi Anda',
           },
-          pointsEarned: 2,
+          pointsEarned: 5,
         };
       case 'Pakaian': // clothes
         return {
@@ -53,7 +53,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Donasi Kebaikan No. 30',
             distance: '6.2 km dari lokasi Anda',
           },
-          pointsEarned: 4,
+          pointsEarned: 5,
         };
       case 'Kaca': // glass
         return {
@@ -65,7 +65,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Kaca Bersih No. 78',
             distance: '1.8 km dari lokasi Anda',
           },
-          pointsEarned: 4,
+          pointsEarned: 5,
         };
       case 'Sampah Medis': // medical
         return {
@@ -77,7 +77,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Kesehatan Bersama No. 5',
             distance: '9.5 km dari lokasi Anda',
           },
-          pointsEarned: 15,
+          pointsEarned: 5,
         };
       case 'Logam': // metal
         return {
@@ -89,7 +89,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Logam Jaya No. 15',
             distance: '4.1 km dari lokasi Anda',
           },
-          pointsEarned: 3,
+          pointsEarned: 5,
         };
       case 'Kertas': // paper
         return {
@@ -101,7 +101,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Pemilahan No. 45',
             distance: '3.1 km dari lokasi Anda',
           },
-          pointsEarned: 2,
+          pointsEarned: 5,
         };
       case 'Plastik': // plastic
         return {
@@ -113,7 +113,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Raya Pembuangan No. 123',
             distance: '2.5 km dari lokasi Anda',
           },
-          pointsEarned: 3,
+          pointsEarned: 5,
         };
       case 'Sepatu': // shoes
         return {
@@ -125,7 +125,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Solusi Limbah No. 8',
             distance: '5.5 km dari lokasi Anda',
           },
-          pointsEarned: 6,
+          pointsEarned: 5,
         };
       default: // Fallback for unknown categories
         return {
@@ -137,7 +137,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
             address: 'Jl. Lingkungan Hijau No. 10',
             distance: '5.0 km dari lokasi Anda',
           },
-          pointsEarned: 1,
+          pointsEarned: 5,
         };
     }
   };
@@ -164,7 +164,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
   return (
     <div className="flex flex-col gap-4 h-full text-[#2C6B3F]"> {/* Parent div for sections */}
       {/* Hasil Pemindaian Section */}
-      <div className="bg-green-100 rounded-lg p-4 shadow-sm">
+      <div className="bg-[#E8F5E9] rounded-lg p-4 shadow-sm">
         <h3 className="text-xl font-semibold mb-3 ">Hasil Pemindaian</h3>
         <div className="grid grid-cols-2 gap-y-2 ">
           <span className="font-medium">Jenis Sampah:</span>
@@ -195,7 +195,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
       </div>
 
       {/* Dampak Lingkungan Section */}
-      <div className="bg-green-100 rounded-lg p-4 shadow-sm border border-gray-200">
+      <div className="bg-[#E8F5E9] rounded-lg p-4 shadow-sm border border-gray-200">
         <h3 className="text-xl font-semibold mb-3 ">Dampak Lingkungan</h3>
         <p>
           {details.environmentalImpact}
@@ -203,7 +203,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
       </div>
 
       {/* Cara Pemilahan Section */}
-      <div className="bg-green-100 rounded-lg p-4 shadow-sm border border-gray-200">
+      <div className="bg-[#E8F5E9] rounded-lg p-4 shadow-sm border border-gray-200">
         <h3 className="text-xl font-semibold mb-3">Cara Pemilahan</h3>
         <p className="mb-4">
           {details.sortingMethod}
@@ -214,7 +214,7 @@ const PredictionResults = ({ predictions, imageUrl }) => {
       </div>
 
       {/* Lokasi TPA Terdekat Section */}
-      <div className="bg-green-100 rounded-lg p-4 shadow-sm border border-gray-200">
+      <div className="bg-[#E8F5E9] rounded-lg p-4 shadow-sm border border-gray-200">
         <h3 className="text-xl font-semibold mb-3 ">Lokasi TPA Terdekat:</h3>
         <div className="flex justify-between items-center ">
           <div>
